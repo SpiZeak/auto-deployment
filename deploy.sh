@@ -6,8 +6,10 @@
 # Stop script on error signal
 set -e
 
+export HOME="/var/www"
+
 # Go to web root directory
-cd ../
+cd /var/www/alviksmaleri.itrak.se
 
 # Remove old deployment folder
 if [ -d "html_deploy" ]; then

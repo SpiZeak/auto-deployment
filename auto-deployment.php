@@ -8,14 +8,13 @@
  * Author URI: https://max.trewhitt.se
  */
 function auto_deployment( $data ) {
-	$plugin_url = plugin_dir_url(__FILE__);
-	$output = shell_exec("bash $plugin_url/deploy.sh");
+	$command = 'bash '.dirname(__FILE__).'/deploy.sh 2>&1';
 
-	/**
-	 * Check if deployment script returns an error
-	 */
-	if( $output ) echo $output;
-	else echo 'Deployment failed.';
+	exec($command, $output);
+
+	foreach ($output as $line) {
+		echo "$line\n";
+	}
 
 	die();
 }
