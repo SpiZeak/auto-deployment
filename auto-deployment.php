@@ -8,7 +8,7 @@
  * Author URI: https://max.trewhitt.se
  */
 function auto_deployment( $data ) {
-	$command = 'bash '.dirname(__FILE__).'/deploy.sh 2>&1';
+	$command = 'nohup bash '.dirname(__FILE__).'/deploy.sh > /{PATH_TO_DOCUMENT_ROOT}/deploy.log &';
 
 	exec($command, $output);
 
